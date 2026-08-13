@@ -1,15 +1,16 @@
-# Ignorar todo el contenido por defecto
+# Ignorar todo en el repositorio
 *
 
-# Excepciones: No ignorar gitignore ni README
+# No ignorar el propio gitignore ni el README
 !.gitignore
 !README.md
 
-# Permitir la carpeta user y solo sus archivos de codigo fuente
-!user/
+# Ignorar todo dentro de user/ por defecto
 user/*
-!user/*.c
+
+# PERMITIR ÚNICAMENTE los archivos de tu proyecto en user/
+!user/sh.c
+!user/mostrar.c
+!user/procesos.c
 !user/*.h
-!user/*.S
 !user/Makefile
-!user/user.ld
