@@ -17,6 +17,14 @@ int main(void) {
 
 
   while(getcmd(buf, sizeof(buf)) >= 0) {
+
+if(buf[strlen(buf)-1] == '\n')
+      buf[strlen(buf)-1] = 0;
+
+  
+    if(buf[0]=='e' && buf[1]=='x' && buf[2]=='i' && buf[3]=='t' && buf[4]==0)
+      exit(0);
+
     int pid =  fork ();
 
     if(pid < 0){
@@ -25,15 +33,22 @@ int main(void) {
     }
     
     if (pid ==0){
-      if(buf [strlen(buf)-1]== '\n')
-      buf [strlen(buf)-1]=0;
+      
+      char *argv[10];
+      int argc = 0;
+      char *p = buf;
 
-      char *argv[2];
-      argv[0]=buf;
-      argv[1]=0;
+      while(*p != 0) {
+        while(*p == ' ' || *p == '\t') { *p = 0; p++; }
+        if(*p == 0) break;
+        argv[argc++] = p;
+        while(*p != 0 && *p != ' ' && *p != '\t') p++;
+      }
+      argv[argc] = 0;
+
+      if(argc == 0) exit(0);
       
       exec(argv[0],argv);
-
       fprintf(2,"sh: exec %s fallo\n",buf);
       exit(1);
 
