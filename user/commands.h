@@ -1,0 +1,1 @@
+void ejecutar_redireccion(char **argv, char *archivo);
