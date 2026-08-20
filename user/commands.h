@@ -3,5 +3,6 @@
 
 void ejecutar_redireccion(char **argv, char *archivo);
 void ejecutar_redireccion_entrada(char **argv, char *archivo);
+void ejecutar_comando_complejo(char **argv, int argc);
 
 #endif
