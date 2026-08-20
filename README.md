@@ -147,27 +147,27 @@ sh
 ```
 
 ---
-#Casos Prueba
-# --- PREPARACIÓN DE ARCHIVOS DE PRUEBA ---
-# --- PREPARACIÓN DE ARCHIVOS ---
+# Casos Prueba
+## --- PREPARACIÓN DE ARCHIVOS DE PRUEBA ---
+
 echo "texto de prueba" > archivo.txt
 echo "este archivo tiene un error critico" >> archivo.txt
 echo "error en el sistema operativo" >> datos.txt
 
-# --- 1. Ejecución simple ---
+## --- 1. Ejecución simple ---
 ls
 # Salida: Muestra la lista de archivos (sh, archivo.txt, datos.txt, etc.)
 
 echo hola
-# Salida: hola
+## Salida: hola
 
 
-# --- 2. Argumentos ---
+## --- 2. Argumentos ---
 echo hola mundo
 # Salida: hola mundo
 
 grep texto archivo.txt
-# Salida: texto de prueba
+## Salida: texto de prueba
 
 
 # --- 3. Redirección de entrada (<) ---
@@ -175,18 +175,18 @@ cat < datos.txt
 # Salida: error en el sistema operativo
 
 
-# --- 4. Redirección de salida (>) ---
+## --- 4. Redirección de salida (>) ---
 echo hola > salida.txt
 cat < salida.txt
 # Salida: hola
 
 
-# --- 5. Tuberías simples (|) ---
+## --- 5. Tuberías simples (|) ---
 echo hola | wc
 # Salida: Conteo de líneas, palabras y bytes (ej: 1 1 5)
 
 
-# --- 6. Tuberías múltiples (| |) ---
+## --- 6. Tuberías múltiples (| |) ---
 cat archivo.txt | grep error | wc
 # Salida: Conteo de las líneas que contienen "error" (ej: 1 6 36)
 
@@ -194,12 +194,12 @@ ls | grep sh | sort | wc
 # Salida: Conteo del comando filtrado
 
 
-# --- 7. Comando exit ---
+## --- 7. Comando exit ---
 exit
 # Salida: Cierra el shell de forma controlada y muestra: init: starting sh.
 
 
-# Decisiones de diseño
+## Decisiones de diseño
 
 - Separación entre el análisis de la línea de comandos (`parser.c`) y su ejecución
   (`commands.c` y `sh.c`).
