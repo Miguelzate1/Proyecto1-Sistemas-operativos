@@ -147,68 +147,37 @@ sh
 ```
 
 ---
+
 # Casos Prueba
-## --- PREPARACIÓN DE ARCHIVOS DE PRUEBA ---
 
-echo "texto de prueba" > archivo.txt
+## 1. Preparación de archivos de prueba
 
-echo "este archivo tiene un error critico" >> archivo.txt
+echo "texto de prueba" > archivo1.txt
 
-echo "error en el sistema operativo" >> datos.txt
+echo "error critico en el sistema" > datos.txt
 
-### --- 1. Ejecución simple ---
+## 2. Ejecución simple y argumentos
 ls
 
-   Salida: Muestra la lista de archivos (sh, archivo.txt, datos.txt, etc.)
-
-echo hola
-
-   Salida: hola
-
-
-### --- 2. Argumentos ---
 echo hola mundo
 
-   Salida: hola mundo
-
-grep texto archivo.txt
-
- Salida: texto de prueba
+grep texto archivo1.txt
 
 
-### --- 3. Redirección de entrada (<) ---
+## 3. Redirección de entrada y salida (< y >)
 cat < datos.txt
 
- Salida: error en el sistema operativo
+echo "hola desde xv6" > salida.txt
 
-
-### --- 4. Redirección de salida (>) ---
-echo hola > salida.txt
 cat < salida.txt
 
-Salida: hola
-
-
-### --- 5. Tuberías simples (|) ---
+## 4. Tuberías simples y múltiples (|)
 echo hola | wc
 
- Salida: Conteo de líneas, palabras y bytes (ej: 1 1 5)
+cat datos.txt | grep error | wc
 
-
-### --- 6. Tuberías múltiples (| |) ---
-cat archivo.txt | grep error | wc
-
- Salida: Conteo de las líneas que contienen "error" (ej: 1 6 36)
-
-ls | grep sh | sort | wc
-
- Salida: Conteo del comando filtrado
-
-
-### --- 7. Comando exit ---
+## 5. Comando interno exit
 exit
-
- Salida: Cierra el shell de forma controlada y muestra: init: starting sh.
 
 
 ## Decisiones de diseño
